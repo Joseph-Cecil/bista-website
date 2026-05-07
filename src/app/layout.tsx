@@ -1,24 +1,18 @@
 ﻿import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 
 const inter = Inter({
   subsets: ["latin"],
+  display: "swap",
   variable: "--font-inter",
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
-    template: %s | \,
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
@@ -37,10 +31,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: ["/images/og-image.jpg"],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -49,8 +40,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={\ \}>
-      <body>{children}</body>
+    <html lang="en" className={inter.variable}>
+      <body style={{ fontFamily: "var(--font-inter, Inter, ui-sans-serif, system-ui, sans-serif)" }}>
+        {children}
+      </body>
     </html>
   );
 }

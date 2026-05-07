@@ -1,24 +1,26 @@
 ﻿import type { Metadata } from "next";
-import { SectionHeading } from "@/components/shared/section-heading";
-import { ServicesGrid } from "@/components/sections/services-grid";
+import { ServicesHero } from "@/components/services/services-hero";
+import { ServicesErp } from "@/components/services/services-erp";
+import { ServicesHrms } from "@/components/services/services-hrms";
+import { ServicesSaas } from "@/components/services/services-saas";
+import { ServicesConsulting } from "@/components/services/services-consulting";
+import { CtaBanner } from "@/components/sections/cta-banner";
 
 export const metadata: Metadata = {
-  title: "Our Services",
-  description: "Explore the full range of professional services we offer.",
+  title: "Our Services | Comprehensive Enterprise Technology Solutions",
+  description:
+    "Explore BISTA Solutions full suite of enterprise services — ERP, HRMS, custom software, database management, cloud infrastructure, and IT consulting.",
 };
 
 export default function ServicesPage() {
   return (
     <main>
-      <section className="py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeading
-            title="Our Services"
-            subtitle="Everything we offer to help your business grow."
-          />
-        </div>
-      </section>
-      <ServicesGrid />
+      <ServicesHero />
+      <ServicesErp />
+      <ServicesHrms />
+      <ServicesSaas />
+      <ServicesConsulting />
+      <CtaBanner />
     </main>
   );
 }

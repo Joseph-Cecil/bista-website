@@ -1,31 +1,225 @@
-﻿@tailwind base;
-@tailwind components;
-@tailwind utilities;
+﻿@import "tailwindcss";
+
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+  --color-border: #e2e8f0;
+  --color-primary: #1d4ed8;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f8fafc;
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+  --color-blue: #1e3a8a;
+  --color-red: #dc2626;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 24px;
+  --radius-2xl: 1rem;
+
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-headings: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+  --text-4xl: 36px;
+  --text-5xl: 48px;
+  --text-6xl: 60px;
+  --text-7xl: 4.5rem;
+
+  --font-weight-light: 300;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  --tracking-tight: -0.025em;
+  --tracking-tighter: -0.05em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+
+  --leading-tight: 1.25;
+  --leading-relaxed: 1.625;
+
+  --blur-sm: 8px;
+  --blur-md: 12px;
+  --blur-3xl: 64px;
+
+  --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --default-transition-duration: 150ms;
+  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes pulse {
+  50% { opacity: 0.5; }
+}
 
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --border: 214.3 31.8% 91.4%;
-    --radius: 0.5rem;
+  *, ::after, ::before {
+    box-sizing: border-box;
   }
-
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground antialiased;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-
   html {
     scroll-behavior: smooth;
+    line-height: 1.5;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  * {
+    border-color: var(--color-border);
   }
 }
+
+/* ============================================================
+   Pure CSS hover classes - used instead of JS event handlers
+   in Server Components
+   ============================================================ */
+@layer utilities {
+  /* Service card lift on hover */
+  .card-hover {
+    transition: transform 150ms ease, box-shadow 150ms ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+  }
+
+  /* Ghost button on dark bg */
+  .btn-ghost-dark {
+    background-color: rgba(255,255,255,0.10);
+    transition: background-color 150ms ease;
+  }
+  .btn-ghost-dark:hover {
+    background-color: rgba(255,255,255,0.20);
+  }
+
+  /* Values card hover */
+  .values-card {
+    background-color: rgba(255,255,255,0.05);
+    transition: background-color 150ms ease;
+  }
+  .values-card:hover {
+    background-color: rgba(255,255,255,0.10);
+  }
+
+  /* CTA ghost button */
+  .btn-outline-white {
+    background-color: transparent;
+    transition: background-color 150ms ease;
+  }
+  .btn-outline-white:hover {
+    background-color: rgba(255,255,255,0.10);
+  }
+
+  /* Partner With Us ghost button */
+  .hero-ghost-btn {
+    background-color: rgba(255,255,255,0.10);
+    backdrop-filter: blur(8px);
+    transition: background-color 150ms ease;
+  }
+  .hero-ghost-btn:hover {
+    background-color: rgba(255,255,255,0.20);
+  }
+
+  /* About section blue button */
+  .btn-blue {
+    background-color: var(--color-blue);
+    transition: background-color 150ms ease;
+  }
+  .btn-blue:hover {
+    background-color: var(--color-primary);
+  }
+
+  /* Paaopaa visit button */
+  .btn-paaopaa {
+    background-color: var(--color-blue);
+    transition: opacity 150ms ease;
+  }
+  .btn-paaopaa:hover {
+    opacity: 0.88;
+  }
+
+  /* Energizer button */
+  .btn-energizer {
+    background-color: var(--color-red);
+    transition: opacity 150ms ease;
+  }
+  .btn-energizer:hover {
+    opacity: 0.88;
+  }
+
+  /* Nav contact button */
+  .btn-nav-contact {
+    background-color: var(--color-primary);
+    transition: background-color 150ms ease;
+  }
+  .btn-nav-contact:hover {
+    background-color: var(--color-blue);
+  }
+
+  /* Services "View All" button */
+  .btn-services-all {
+    background-color: white;
+    transition: background-color 150ms ease;
+  }
+  .btn-services-all:hover {
+    background-color: var(--color-muted);
+  }
+
+  /* Service card icon bg hover */
+  .service-icon-wrap {
+    background-color: var(--color-secondary);
+    transition: background-color 150ms ease;
+  }
+  .group:hover .service-icon-wrap {
+    background-color: color-mix(in oklab, var(--color-primary) 10%, transparent);
+  }
+
+  /* Service card title hover */
+  .service-title {
+    color: var(--color-foreground);
+    transition: color 150ms ease;
+  }
+  .group:hover .service-title {
+    color: var(--color-primary);
+  }
+
+  /* Service card learn more arrow gap */
+  .service-learn-more {
+    gap: 4px;
+    transition: gap 150ms ease;
+  }
+  .group:hover .service-learn-more {
+    gap: 8px;
+  }
+}
+
+
+  /* Team card hover — same lift as card-hover */
+  .team-card-hover {
+    transition: box-shadow 150ms ease, transform 150ms ease;
+  }
+  .team-card-hover:hover {
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+
+
+  /* SaaS module card hover */
+  .saas-module-card {
+    transition: background-color 150ms ease;
+  }
+  .saas-module-card:hover {
+    background-color: rgba(255, 255, 255, 0.10);
+  }

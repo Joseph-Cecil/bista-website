@@ -1,14 +1,15 @@
 ﻿export const siteConfig = {
-  name: "Your Company Name",
-  description: "A clear, direct description of what your company does and the value it delivers.",
+  name: "BISTA Solutions",
+  tagline: "IT Excellence",
+  description:
+    "Translating decades of expertise into cutting-edge software development and database management for government and corporate institutions.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-  email: "info@yourcompany.com",
-  phone: "+1 (555) 000-0000",
-  address: "123 Business Street, City, State, ZIP",
+  email: "info@bistasolutions.com",
+  phone: "+233 (0) 30 200 0000",
+  address: "BISTA House, Accra, Ghana, West Africa",
   socialLinks: {
-    linkedin: "https://linkedin.com/company/yourcompany",
-    twitter: "https://twitter.com/yourcompany",
-    facebook: "https://facebook.com/yourcompany",
-    instagram: "https://instagram.com/yourcompany",
+    twitter: "https://twitter.com/bistasolutions",
+    linkedin: "https://linkedin.com/company/bistasolutions",
+    facebook: "https://facebook.com/bistasolutions",
   },
 } as const;
