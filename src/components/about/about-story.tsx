@@ -92,10 +92,10 @@ export function AboutStory() {
               borderColor: "var(--color-border)",
               boxShadow: "0 10px 15px -3px rgba(0,0,0,0.1)",
             }}
-            unoptimized
           />
         </div>
       </div>
     </section>
   );
 }
+

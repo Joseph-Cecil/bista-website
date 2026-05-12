@@ -151,10 +151,10 @@ export function ServicesHrms() {
                 "color-mix(in oklab, var(--color-border) 50%, transparent)",
               boxShadow: "0 25px 50px -12px rgba(0,0,0,0.25)",
             }}
-            unoptimized
           />
         </div>
       </div>
     </section>
   );
 }
+

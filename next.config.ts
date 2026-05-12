@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "banani-avatars.storage.googleapis.com",
+      },
+      {
+        protocol: "https",
         hostname: "yourcompany.com",
       },
     ],
@@ -40,14 +44,13 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              // Allow eval() in dev for React debugging; lock it down in production
               isDev
                 ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com"
                 : "script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: https:",
-              "connect-src 'self' https://www.google.com https://storage.googleapis.com",
+              "connect-src 'self' https://www.google.com https://storage.googleapis.com https://api.resend.com",
               "frame-src https://www.google.com",
               "base-uri 'self'",
               "form-action 'self'",

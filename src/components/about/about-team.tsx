@@ -91,7 +91,6 @@ export function AboutTeam() {
                     height={128}
                     className="rounded-full object-cover"
                     style={{ width: "128px", height: "128px" }}
-                    unoptimized
                   />
                 </div>
               </div>
@@ -122,3 +121,4 @@ export function AboutTeam() {
     </section>
   );
 }
+

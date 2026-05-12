@@ -1,21 +1,22 @@
 ﻿import type { Metadata } from "next";
-import { SectionHeading } from "@/components/shared/section-heading";
+import { CareersHero } from "@/components/careers/careers-hero";
+import { CareersPerks } from "@/components/careers/careers-perks";
+import { CareersPositions } from "@/components/careers/careers-positions";
+import { CtaBanner } from "@/components/sections/cta-banner";
 
 export const metadata: Metadata = {
-  title: "Careers",
-  description: "Join our team. Explore current job openings.",
+  title: "Careers | Join the BISTA Solutions Team",
+  description:
+    "Explore career opportunities at BISTA Solutions. We are hiring engineers, designers, project managers, and sales executives across Ghana.",
 };
 
 export default function CareersPage() {
   return (
-    <main className="py-24 px-6">
-      <div className="max-w-4xl mx-auto">
-        <SectionHeading
-          title="Join Our Team"
-          subtitle="We are always looking for talented, passionate people."
-          centered
-        />
-      </div>
+    <main>
+      <CareersHero />
+      <CareersPerks />
+      <CareersPositions />
+      <CtaBanner />
     </main>
   );
 }

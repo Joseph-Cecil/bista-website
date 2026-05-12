@@ -2,6 +2,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
+import { RecaptchaProvider } from "@/components/providers/recaptcha-provider";
+import { ScrollToTop } from "@/components/shared/scroll-to-top";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -41,8 +43,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body style={{ fontFamily: "var(--font-inter, Inter, ui-sans-serif, system-ui, sans-serif)" }}>
-        {children}
+      <body
+        style={{
+          fontFamily:
+            "var(--font-inter, Inter, ui-sans-serif, system-ui, sans-serif)",
+        }}
+      >
+        <RecaptchaProvider>
+          <ScrollToTop />
+          {children}
+        </RecaptchaProvider>
       </body>
     </html>
   );

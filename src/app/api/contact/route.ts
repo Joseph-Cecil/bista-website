@@ -4,7 +4,11 @@ import { sanitizeObject } from "@/lib/security/sanitize";
 import { isHoneypotTriggered } from "@/lib/security/honeypot";
 import { rateLimit } from "@/lib/security/rate-limiter";
 import { verifyRecaptcha } from "@/lib/services/recaptcha";
-import { sendEmail } from "@/lib/services/email";
+import {
+  sendEmail,
+  buildContactNotificationEmail,
+  buildContactConfirmationEmail,
+} from "@/lib/services/email";
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,7 +17,7 @@ export async function POST(request: NextRequest) {
       request.headers.get("x-real-ip") ||
       "unknown";
 
-    // 1. Rate Limiting
+    // 1. Rate limiting — 3 submissions per minute per IP
     const { allowed, retryAfter } = rateLimit(ip, {
       maxRequests: 3,
       windowMs: 60_000,
@@ -21,40 +25,65 @@ export async function POST(request: NextRequest) {
 
     if (!allowed) {
       return NextResponse.json(
-        { success: false, error: Too many requests. Retry in \s. },
+        {
+          success: false,
+          error: `Too many requests. Please wait ${retryAfter} seconds before trying again.`,
+        },
         { status: 429 }
       );
     }
 
-    // 2. Parse and Validate
-    const body = await request.json();
+    // 2. Parse and validate
+    let body: unknown;
+    try {
+      body = await request.json();
+    } catch {
+      return NextResponse.json(
+        { success: false, error: "Invalid request format." },
+        { status: 400 }
+      );
+    }
+
     const validation = contactFormSchema.safeParse(body);
 
     if (!validation.success) {
       return NextResponse.json(
-        { success: false, error: "Invalid form data", details: validation.error.flatten().fieldErrors },
+        {
+          success: false,
+          error: "Please check your form entries and try again.",
+          details: validation.error.flatten().fieldErrors,
+        },
         { status: 400 }
       );
     }
 
     const data = validation.data;
 
-    // 3. Honeypot Check
+    // 3. Honeypot check — silent fail to confuse bots
     if (isHoneypotTriggered(data.company_url)) {
-      return NextResponse.json({ success: true }); // Silent fail
+      return NextResponse.json({ success: true });
     }
 
-    // 4. reCAPTCHA Verification
-    const isHuman = await verifyRecaptcha(data.recaptchaToken);
-    if (!isHuman) {
-      return NextResponse.json(
-        { success: false, error: "reCAPTCHA verification failed." },
-        { status: 403 }
-      );
+    // 4. reCAPTCHA — skip in dev if using bypass token
+    const isDevBypass =
+      process.env.NODE_ENV === "development" &&
+      data.recaptchaToken === "dev-bypass-token";
+
+    if (!isDevBypass) {
+      const isHuman = await verifyRecaptcha(data.recaptchaToken);
+      if (!isHuman) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: "Security verification failed. Please refresh and try again.",
+          },
+          { status: 403 }
+        );
+      }
     }
 
-    // 5. Sanitize Inputs
-    const sanitizedData = sanitizeObject({
+    // 5. Sanitize all inputs
+    const sanitized = sanitizeObject({
       name: data.name,
       email: data.email,
       phone: data.phone || "Not provided",
@@ -62,43 +91,37 @@ export async function POST(request: NextRequest) {
       message: data.message,
     });
 
-    // 6. Send notification to organization
-    await sendEmail({
-      to: process.env.CONTACT_EMAIL!,
-      subject: New Contact: \,
-      html: 
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> \</p>
-        <p><strong>Email:</strong> \</p>
-        <p><strong>Phone:</strong> \</p>
-        <p><strong>Subject:</strong> \</p>
-        <p><strong>Message:</strong></p>
-        <p>\</p>
-        <hr />
-        <p><small>Submitted from IP: \</small></p>
-      ,
-    });
+    // 6. Send notification to the organisation
+    const contactEmail = process.env.CONTACT_EMAIL;
+    if (contactEmail) {
+      await sendEmail({
+        to: contactEmail,
+        subject: `New Enquiry: ${sanitized.subject}`,
+        html: buildContactNotificationEmail({ ...sanitized, ip }),
+        replyTo: sanitized.email,
+      });
+    }
 
-    // 7. Send confirmation to user
+    // 7. Send confirmation to the user
     await sendEmail({
-      to: sanitizedData.email,
-      subject: "We received your message — Thank you!",
-      html: 
-        <h2>Thank you, \!</h2>
-        <p>We have received your message and will respond within 1-2 business days.</p>
-        <p>Best regards,<br/>Your Company Name</p>
-      ,
+      to: sanitized.email,
+      subject: "We received your message — BISTA Solutions",
+      html: buildContactConfirmationEmail(sanitized.name),
     });
 
     return NextResponse.json({
       success: true,
       message: "Your message has been sent successfully.",
     });
-
   } catch (error) {
-    console.error("Contact API error:", error);
+    // Log full error server-side but never expose internals to client
+    console.error("[Contact API Error]", error);
     return NextResponse.json(
-      { success: false, error: "An unexpected error occurred. Please try again." },
+      {
+        success: false,
+        error:
+          "An unexpected error occurred. Please try again or call us directly.",
+      },
       { status: 500 }
     );
   }
