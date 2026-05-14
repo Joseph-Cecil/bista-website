@@ -152,11 +152,12 @@ export function AboutStory() {
           <Image
             src="/images/about/spectrum-of-services.jpg"
             alt="Spectrum of Services offered by BISTA Solutions"
-            width={600}
-            height={450}
-            className="rounded-lg border object-contain"
+            width={508}
+            height={518}
+            className="rounded-lg border"
             style={{
               maxWidth: "100%",
+              height: "auto",
               borderColor: "var(--color-border)",
             }}
           />

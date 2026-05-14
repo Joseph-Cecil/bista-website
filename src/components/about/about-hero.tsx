@@ -20,17 +20,13 @@
       <div className="max-w-4xl mx-auto text-center relative z-10">
         {/* Badge */}
         <div
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase mb-6"
+          className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase mb-6"
           style={{
             backgroundColor: "rgba(255,255,255,0.10)",
             color: "white",
             letterSpacing: "var(--tracking-widest)",
           }}
         >
-          <span
-            className="size-2 rounded-full inline-block"
-            style={{ backgroundColor: "var(--color-red)" }}
-          />
           Our Story
         </div>
 

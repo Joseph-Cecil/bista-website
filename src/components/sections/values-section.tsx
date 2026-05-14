@@ -1,23 +1,17 @@
-﻿import { Icon } from "@iconify/react";
-
-const values = [
+﻿const values = [
   {
-    icon: "lucide:scale",
     title: "Integrity",
     desc: "Honest, transparent, and ethical in all our dealings.",
   },
   {
-    icon: "lucide:users",
     title: "Customer Focus",
     desc: "Your success is the true measure of our success.",
   },
   {
-    icon: "lucide:check-circle",
     title: "Accountability",
     desc: "Taking full responsibility for our actions and outcomes.",
   },
   {
-    icon: "lucide:zap",
     title: "Innovation",
     desc: "Constantly seeking better ways to solve complex problems.",
   },
@@ -88,16 +82,6 @@ export function ValuesSection() {
               className="values-card flex flex-col items-center p-8 rounded-2xl border"
               style={{ borderColor: "rgba(255,255,255,0.10)" }}
             >
-              <div
-                className="size-20 rounded-full flex items-center justify-center mb-6"
-                style={{
-                  backgroundColor: "rgba(255,255,255,0.10)",
-                  color: "var(--color-red)",
-                  boxShadow: "inset 0 2px 4px rgba(0,0,0,0.05)",
-                }}
-              >
-                <Icon icon={value.icon} width={32} height={32} />
-              </div>
               <h4 className="font-bold text-xl mb-3">{value.title}</h4>
               <p
                 className="text-sm"

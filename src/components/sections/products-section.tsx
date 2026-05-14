@@ -11,14 +11,13 @@ export function ProductsSection() {
         {/* Section Header */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase mb-4"
+            className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase mb-4"
             style={{
               backgroundColor: "var(--color-secondary)",
               color: "var(--color-primary)",
               letterSpacing: "var(--tracking-widest)",
             }}
           >
-            <Icon icon="lucide:shopping-bag" width={14} height={14} />
             Retail &amp; E-Commerce
           </div>
           <h3
@@ -102,25 +101,13 @@ export function ProductsSection() {
                   products directly to consumers across Ghana. We guarantee
                   authenticity, secure payments, and nationwide delivery.
                 </p>
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3 mb-8" style={{ listStyleType: "disc", paddingLeft: "1.25rem" }}>
                   {[
                     "Nationwide Delivery",
                     "Secure Online Payments",
                     "Verified Authentic Products",
                   ].map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-center gap-2 text-sm font-medium"
-                    >
-                      <Icon
-                        icon="lucide:check-circle-2"
-                        width={16}
-                        height={16}
-                        style={{
-                          color: "var(--color-primary)",
-                          flexShrink: 0,
-                        }}
-                      />
+                    <li key={item} className="text-sm font-medium">
                       {item}
                     </li>
                   ))}
@@ -161,7 +148,7 @@ export function ProductsSection() {
               <div>
                 {/* Badge */}
                 <div
-                  className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase mb-8 border"
+                  className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase mb-8 border"
                   style={{
                     backgroundColor:
                       "color-mix(in oklab, var(--color-red) 20%, transparent)",
@@ -171,7 +158,6 @@ export function ProductsSection() {
                     letterSpacing: "var(--tracking-widest)",
                   }}
                 >
-                  <Icon icon="lucide:star" width={14} height={14} />
                   Official Partnership
                 </div>
 

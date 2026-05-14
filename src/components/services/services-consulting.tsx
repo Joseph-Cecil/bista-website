@@ -1,5 +1,4 @@
-﻿import { Icon } from "@iconify/react";
-
+﻿
 const consultingServices = [
   {
     icon: "lucide:monitor",
@@ -119,19 +118,8 @@ export function ServicesConsulting() {
                   : "white",
               }}
             >
-              {/* Icon + Title row */}
-              <div className="flex items-center gap-4 mb-6">
-                <div
-                  className="size-12 rounded-lg flex items-center justify-center"
-                  style={{
-                    backgroundColor: service.isSecurityCard
-                      ? "var(--color-blue)"
-                      : "var(--color-secondary)",
-                    color: service.iconColor,
-                  }}
-                >
-                  <Icon icon={service.icon} width={24} height={24} />
-                </div>
+              {/* Title row */}
+              <div className="mb-6">
                 <h4
                   className="font-bold text-lg leading-tight"
                   style={{
@@ -145,27 +133,17 @@ export function ServicesConsulting() {
               </div>
 
               {/* Items */}
-              <ul className="space-y-3 text-sm"
-                style={{ color: service.isSecurityCard ? "var(--color-foreground)" : "var(--color-muted-foreground)" }}>
+              <ul
+                className="space-y-2 text-sm"
+                style={{
+                  listStyleType: "disc",
+                  paddingLeft: "1.25rem",
+                  color: service.isSecurityCard ? "var(--color-foreground)" : "var(--color-muted-foreground)",
+                }}
+              >
                 {service.items.map((item) => (
-                  <li key={item} className="flex items-center gap-2">
-                    {service.isSecurityCard ? (
-                      <Icon
-                        icon="lucide:lock"
-                        width={14}
-                        height={14}
-                        style={{
-                          color: "var(--color-red)",
-                          flexShrink: 0,
-                          display: "inline",
-                        }}
-                      />
-                    ) : (
-                      <span style={{ color: "var(--color-muted-foreground)" }}>•</span>
-                    )}
-                    <span className={service.isSecurityCard ? "font-medium" : ""}>
-                      {item}
-                    </span>
+                  <li key={item} className={service.isSecurityCard ? "font-medium" : ""}>
+                    {item}
                   </li>
                 ))}
               </ul>

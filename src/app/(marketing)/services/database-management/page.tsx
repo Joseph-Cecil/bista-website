@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { CtaBanner } from "@/components/sections/cta-banner";
+import { ServicesStickyNav } from "@/components/services/services-sticky-nav";
 
 export const metadata: Metadata = {
   title: "Enterprise Database Management",
@@ -61,6 +62,7 @@ const stats = [
 export default function DatabaseManagementPage() {
   return (
     <main>
+      <ServicesStickyNav current="Database Management" />
       {/* Hero */}
       <header
         className="py-24 px-10 relative overflow-hidden text-white"
@@ -76,16 +78,17 @@ export default function DatabaseManagementPage() {
         />
         <div className="max-w-4xl mx-auto relative z-10">
           <nav className="flex items-center gap-2 text-sm mb-8" style={{ color: "rgba(255,255,255,0.60)" }}>
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <Icon icon="lucide:chevron-right" width={14} height={14} />
             <Link href="/services" className="hover:text-white transition-colors">Services</Link>
             <Icon icon="lucide:chevron-right" width={14} height={14} />
             <span style={{ color: "white" }}>Database Management</span>
           </nav>
 
           <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase mb-6"
+            className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase mb-6"
             style={{ backgroundColor: "rgba(255,255,255,0.10)", letterSpacing: "var(--tracking-widest)" }}
           >
-            <Icon icon="lucide:database" width={14} height={14} style={{ color: "var(--color-red)" }} />
             Core Service
           </div>
           <h1
@@ -179,15 +182,6 @@ export default function DatabaseManagementPage() {
                 className="border rounded-xl p-8 bg-white card-hover"
                 style={{ borderColor: "var(--color-border)", boxShadow: "0 1px 3px rgba(0,0,0,0.08)" }}
               >
-                <div
-                  className="size-12 rounded-lg flex items-center justify-center mb-5"
-                  style={{
-                    backgroundColor: "color-mix(in oklab, var(--color-blue) 10%, transparent)",
-                    color: "var(--color-blue)",
-                  }}
-                >
-                  <Icon icon={svc.icon} width={22} height={22} />
-                </div>
                 <h4 className="font-bold text-lg mb-3" style={{ color: "var(--color-foreground)" }}>
                   {svc.title}
                 </h4>
@@ -223,10 +217,9 @@ export default function DatabaseManagementPage() {
             {databases.map((db) => (
               <div
                 key={db.name}
-                className="flex items-center gap-2 px-5 py-3 rounded-full border bg-white font-medium text-sm"
+                className="px-5 py-3 rounded-full border bg-white font-medium text-sm"
                 style={{ borderColor: "var(--color-border)", color: "var(--color-foreground)" }}
               >
-                <Icon icon="lucide:database" width={14} height={14} style={{ color: "var(--color-primary)" }} />
                 {db.name}
               </div>
             ))}

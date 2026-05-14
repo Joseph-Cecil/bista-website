@@ -1,6 +1,4 @@
 ﻿import type { Metadata } from "next";
-import Link from "next/link";
-import { Icon } from "@iconify/react";
 
 export const metadata: Metadata = {
   title: "Support | BISTA Solutions Help Center",
@@ -31,25 +29,21 @@ export default function SupportPage() {
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
           {[
             {
-              icon: "lucide:headphones",
               title: "Contact Support",
               desc: "Speak directly with our technical team for urgent issues.",
               action: "Call +233 (0) 30 200 0000",
             },
             {
-              icon: "lucide:mail",
               title: "Email Support",
               desc: "Submit a support ticket and receive a response within 24 hours.",
               action: "support@bistasolutions.com",
             },
             {
-              icon: "lucide:book-open",
               title: "Documentation",
               desc: "Access user guides, API documentation, and video tutorials for our software products.",
               action: "Coming Soon",
             },
             {
-              icon: "lucide:message-circle",
               title: "Community Forum",
               desc: "Connect with other BISTA users to share knowledge and solutions.",
               action: "Coming Soon",
@@ -63,16 +57,6 @@ export default function SupportPage() {
                 boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
               }}
             >
-              <div
-                className="size-12 rounded-lg flex items-center justify-center mb-5"
-                style={{
-                  backgroundColor:
-                    "color-mix(in oklab, var(--color-primary) 10%, transparent)",
-                  color: "var(--color-primary)",
-                }}
-              >
-                <Icon icon={item.icon} width={24} height={24} />
-              </div>
               <h3
                 className="font-bold text-lg mb-2"
                 style={{ color: "var(--color-foreground)" }}

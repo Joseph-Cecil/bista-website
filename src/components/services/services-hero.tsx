@@ -1,5 +1,4 @@
 ﻿import Image from "next/image";
-import { Icon } from "@iconify/react";
 
 export function ServicesHero() {
   return (
@@ -33,7 +32,7 @@ export function ServicesHero() {
       <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
         {/* Badge */}
         <div
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase mb-6 border"
+          className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase mb-6 border"
           style={{
             backgroundColor: "rgba(255,255,255,0.10)",
             backdropFilter: "blur(8px)",
@@ -41,12 +40,6 @@ export function ServicesHero() {
             letterSpacing: "var(--tracking-widest)",
           }}
         >
-          <Icon
-            icon="lucide:layers"
-            width={14}
-            height={14}
-            style={{ color: "var(--color-red)" }}
-          />
           Our Expertise
         </div>
 

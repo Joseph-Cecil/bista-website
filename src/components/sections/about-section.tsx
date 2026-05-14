@@ -1,15 +1,14 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
+import { AnimatedWrapper } from "@/components/shared/animated-wrapper";
 
 const highlights = [
   {
-    icon: "lucide:globe",
     title: "Local Expertise",
     desc: "Deep understanding of regional challenges and operational opportunities.",
   },
   {
-    icon: "lucide:shield-check",
     title: "Global Standards",
     desc: "CMM-certified process control for guaranteed enterprise-grade quality.",
   },
@@ -36,6 +35,7 @@ export function AboutSection() {
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         {/* Image Column */}
+        <AnimatedWrapper delay={0}>
         <div className="relative">
           <div
             className="absolute rounded-2xl -z-10"
@@ -47,13 +47,12 @@ export function AboutSection() {
             }}
           />
           <Image
-            src="/images/erp/erp-modules.png"
-            alt="BISTA ERP modules overview — complete enterprise management system"
-            width={800}
-            height={600}
+            src="/images/about/about-design-people.png"
+            alt="BISTA Solutions team — our people and culture"
+            width={645}
+            height={603}
             className="rounded-xl w-full object-contain border bg-white p-4"
             style={{
-              aspectRatio: "4/3",
               borderColor: "var(--color-border)",
               boxShadow: "0 25px 50px -12px rgba(0,0,0,0.25)",
             }}
@@ -67,21 +66,13 @@ export function AboutSection() {
               boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1)",
             }}
           >
-            <div className="flex items-center gap-4 mb-3">
+            <div className="mb-2">
+              <div className="font-bold text-sm">CEO Message</div>
               <div
-                className="size-12 rounded-full flex items-center justify-center text-white shrink-0"
-                style={{ backgroundColor: "var(--color-blue)" }}
+                className="text-xs"
+                style={{ color: "var(--color-muted-foreground)" }}
               >
-                <Icon icon="lucide:quote" width={20} height={20} />
-              </div>
-              <div>
-                <div className="font-bold text-sm">CEO Message</div>
-                <div
-                  className="text-xs"
-                  style={{ color: "var(--color-muted-foreground)" }}
-                >
-                  Leadership Team
-                </div>
+                Leadership Team
               </div>
             </div>
             <p
@@ -92,19 +83,20 @@ export function AboutSection() {
             </p>
           </div>
         </div>
+        </AnimatedWrapper>
 
         {/* Text Column */}
+        <AnimatedWrapper delay={0.1}>
         <div className="pl-0 md:pl-8">
-          {/* Pill Badge */}
+          {/* Section label */}
           <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase mb-4"
+            className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase mb-4"
             style={{
               backgroundColor: "var(--color-secondary)",
               color: "var(--color-primary)",
               letterSpacing: "var(--tracking-widest)",
             }}
           >
-            <Icon icon="lucide:info" width={14} height={14} />
             About BISTA
           </div>
 
@@ -137,7 +129,7 @@ export function AboutSection() {
             local challenges.
           </p>
 
-          {/* Highlight Cards — hover via CSS, no JS handlers */}
+          {/* Highlight Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {highlights.map((h) => (
               <div
@@ -148,16 +140,6 @@ export function AboutSection() {
                   boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
                 }}
               >
-                <div
-                  className="size-10 rounded-md flex items-center justify-center mb-3"
-                  style={{
-                    backgroundColor:
-                      "color-mix(in oklab, var(--color-primary) 10%, transparent)",
-                    color: "var(--color-primary)",
-                  }}
-                >
-                  <Icon icon={h.icon} width={20} height={20} />
-                </div>
                 <h4
                   className="font-bold mb-2"
                   style={{ color: "var(--color-foreground)" }}
@@ -196,6 +178,7 @@ export function AboutSection() {
             </Link>
           </div>
         </div>
+        </AnimatedWrapper>
       </div>
     </section>
   );

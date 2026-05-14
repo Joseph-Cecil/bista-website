@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Icon } from "@iconify/react";
 
 interface ErpModule {
   title: string;
@@ -179,14 +178,14 @@ export function ServicesErp() {
               }}
             >
               {/* Image */}
-              <div className="relative w-full overflow-hidden rounded-lg">
+              <div className="w-full rounded-lg overflow-hidden">
                 <Image
                   src={module.image}
                   alt={module.imageAlt}
-                  width={580}
-                  height={380}
-                  className="w-full object-cover rounded-lg"
-                  style={{ aspectRatio: "3/2" }}
+                  width={1600}
+                  height={550}
+                  className="w-full rounded-lg"
+                  style={{ height: "auto" }}
                 />
               </div>
 
@@ -220,25 +219,12 @@ export function ServicesErp() {
                 >
                   The benefits:
                 </p>
-                <ul className="space-y-2">
+                <ul
+                  className="space-y-2 text-sm"
+                  style={{ listStyleType: "disc", paddingLeft: "1.25rem", color: "var(--color-muted-foreground)" }}
+                >
                   {module.benefits.map((benefit) => (
-                    <li
-                      key={benefit}
-                      className="flex items-start gap-2 text-sm"
-                      style={{ color: "var(--color-muted-foreground)" }}
-                    >
-                      <Icon
-                        icon="lucide:check"
-                        width={16}
-                        height={16}
-                        style={{
-                          color: "var(--color-red)",
-                          marginTop: "2px",
-                          flexShrink: 0,
-                        }}
-                      />
-                      <span>{benefit}</span>
-                    </li>
+                    <li key={benefit}>{benefit}</li>
                   ))}
                 </ul>
               </div>

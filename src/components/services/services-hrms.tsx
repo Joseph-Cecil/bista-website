@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Icon } from "@iconify/react";
 
 const hrFeatures = [
   {
@@ -55,8 +54,8 @@ export function ServicesHrms() {
           <Image
             src="/images/hero/hrms-hero.jpg"
             alt="BISTA Human Resource Management Software"
-            width={1166}
-            height={401}
+            width={1000}
+            height={516}
             className="w-full object-cover rounded-xl"
             style={{ maxHeight: "400px" }}
           />
@@ -65,7 +64,7 @@ export function ServicesHrms() {
         {/* Header */}
         <div className="mb-12">
           <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase mb-6"
+            className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase mb-6"
             style={{
               backgroundColor:
                 "color-mix(in oklab, var(--color-red) 10%, transparent)",
@@ -73,7 +72,6 @@ export function ServicesHrms() {
               letterSpacing: "var(--tracking-widest)",
             }}
           >
-            <Icon icon="lucide:users" width={14} height={14} />
             BISTA HRMS
           </div>
 
@@ -145,12 +143,13 @@ export function ServicesHrms() {
         <div className="space-y-8">
           {hrFeatures.map((feat) => (
             <div key={feat.title} className="flex gap-4">
-              <div
-                className="size-6 rounded-full flex items-center justify-center shrink-0 mt-1"
-                style={{ backgroundColor: "var(--color-red)" }}
+              <span
+                className="shrink-0 mt-1.5 font-bold text-sm"
+                style={{ color: "var(--color-red)" }}
+                aria-hidden="true"
               >
-                <Icon icon="lucide:check" width={14} height={14} color="white" />
-              </div>
+                —
+              </span>
               <div>
                 <h5
                   className="font-semibold text-base mb-2"

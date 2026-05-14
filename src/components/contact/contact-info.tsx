@@ -1,5 +1,4 @@
 ﻿import { Icon } from "@iconify/react";
-import { siteConfig } from "@/config/site";
 
 const contactCards = [
   {

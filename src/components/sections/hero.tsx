@@ -26,20 +26,13 @@ export function HeroSection() {
         <div className="flex-1 text-center lg:text-left">
           {/* Badge */}
           <div
-            className="inline-flex items-center gap-2 border text-white px-4 py-1.5 rounded-full text-sm font-medium mb-6 shadow-lg"
+            className="inline-block border text-white px-4 py-1.5 rounded-full text-sm font-medium mb-6 shadow-lg"
             style={{
               backgroundColor: "rgba(255,255,255,0.10)",
               backdropFilter: "blur(12px)",
               borderColor: "rgba(255,255,255,0.20)",
             }}
           >
-            <span
-              className="size-2 rounded-full"
-              style={{
-                backgroundColor: "var(--color-red)",
-                animation: "pulse 2s cubic-bezier(0.4,0,0.6,1) infinite",
-              }}
-            />
             Pioneering IT Excellence in Ghana
           </div>
 

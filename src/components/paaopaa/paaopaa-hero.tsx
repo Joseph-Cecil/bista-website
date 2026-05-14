@@ -1,6 +1,4 @@
-﻿import { Icon } from "@iconify/react";
-
-export function PaaopaaHero() {
+﻿export function PaaopaaHero() {
   return (
     <header
       className="py-24 px-10 relative overflow-hidden"

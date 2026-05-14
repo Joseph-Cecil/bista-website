@@ -1,7 +1,8 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { CtaBanner } from "@/components/sections/cta-banner";
+import { ServicesStickyNav } from "@/components/services/services-sticky-nav";
 
 export const metadata: Metadata = {
   title: "IT Consultancy & Strategy",
@@ -11,73 +12,59 @@ export const metadata: Metadata = {
 
 const consultingAreas = [
   {
-    icon: "lucide:compass",
     title: "Digital Transformation Strategy",
     desc: "Moving a business from manual or legacy processes to modern digital systems is not a technology problem — it is a change management problem that requires technology. We help leadership teams build realistic transformation roadmaps.",
-    color: "var(--color-blue)",
   },
   {
-    icon: "lucide:search",
     title: "Technology Audit & Assessment",
     desc: "Before you invest in new systems, you need an honest picture of where you stand today. We assess your current infrastructure, identify risks, quantify technical debt, and produce a clear report with prioritised recommendations.",
-    color: "var(--color-primary)",
   },
   {
-    icon: "lucide:layers",
     title: "Enterprise Architecture",
     desc: "We design the blueprint for how your technology ecosystem should be structured — which systems talk to which, where your data lives, how services are deployed, and how everything scales as you grow.",
-    color: "var(--color-blue)",
   },
   {
-    icon: "lucide:users",
     title: "Vendor Selection & Procurement",
     desc: "The technology market is full of vendors making identical promises. We help you write requirements, evaluate proposals, conduct due diligence, and negotiate contracts from a position of knowledge.",
-    color: "var(--color-primary)",
   },
   {
-    icon: "lucide:trending-up",
     title: "IT Governance & Policy",
     desc: "We develop IT governance frameworks, acceptable use policies, disaster recovery plans, and business continuity documentation. Governance is what separates organisations that recover from crises from those that do not.",
-    color: "var(--color-blue)",
   },
   {
-    icon: "lucide:shield-check",
     title: "Cybersecurity Consulting",
     desc: "We conduct security assessments, identify vulnerabilities, advise on compliance requirements, and help you build a security posture appropriate for your risk profile and industry.",
-    color: "var(--color-red)",
   },
 ];
 
 const sectors = [
-  { icon: "lucide:landmark", name: "Government & Public Sector" },
-  { icon: "lucide:building-2", name: "Banking & Financial Services" },
-  { icon: "lucide:heart-pulse", name: "Healthcare" },
-  { icon: "lucide:truck", name: "Logistics & Supply Chain" },
-  { icon: "lucide:graduation-cap", name: "Education" },
-  { icon: "lucide:shopping-bag", name: "Retail & FMCG" },
+  "Government & Public Sector",
+  "Banking & Financial Services",
+  "Healthcare",
+  "Logistics & Supply Chain",
+  "Education",
+  "Retail & FMCG",
 ];
 
 const engagementModels = [
   {
     title: "Project-Based",
     desc: "A defined scope with clear deliverables. Ideal for audits, assessments, strategy documents, and vendor selection processes.",
-    icon: "lucide:file-check",
   },
   {
     title: "Retained Advisory",
     desc: "An ongoing relationship where we act as your external CTO or technology advisor. Monthly retainer, available when you need us.",
-    icon: "lucide:handshake",
   },
   {
     title: "Embedded Consulting",
     desc: "One of our senior consultants works alongside your team for a defined period to drive transformation from the inside.",
-    icon: "lucide:user-check",
   },
 ];
 
 export default function ItConsultancyPage() {
   return (
     <main>
+      <ServicesStickyNav current="IT Consultancy" />
       {/* Hero */}
       <header
         className="py-24 px-10 relative overflow-hidden text-white"
@@ -92,16 +79,17 @@ export default function ItConsultancyPage() {
         />
         <div className="max-w-4xl mx-auto relative z-10">
           <nav className="flex items-center gap-2 text-sm mb-8" style={{ color: "rgba(255,255,255,0.60)" }}>
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <Icon icon="lucide:chevron-right" width={14} height={14} />
             <Link href="/services" className="hover:text-white transition-colors">Services</Link>
             <Icon icon="lucide:chevron-right" width={14} height={14} />
             <span style={{ color: "white" }}>IT Consultancy</span>
           </nav>
 
           <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase mb-6"
+            className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase mb-6"
             style={{ backgroundColor: "rgba(255,255,255,0.10)", letterSpacing: "var(--tracking-widest)" }}
           >
-            <Icon icon="lucide:lightbulb" width={14} height={14} style={{ color: "var(--color-red)" }} />
             Core Service
           </div>
           <h1
@@ -155,15 +143,6 @@ export default function ItConsultancyPage() {
                 className="border rounded-xl p-8 bg-white card-hover"
                 style={{ borderColor: "var(--color-border)", boxShadow: "0 1px 3px rgba(0,0,0,0.08)" }}
               >
-                <div
-                  className="size-12 rounded-lg flex items-center justify-center mb-5"
-                  style={{
-                    backgroundColor: `color-mix(in oklab, ${area.color} 10%, transparent)`,
-                    color: area.color,
-                  }}
-                >
-                  <Icon icon={area.icon} width={22} height={22} />
-                </div>
                 <h4 className="font-bold text-lg mb-3" style={{ color: "var(--color-foreground)" }}>
                   {area.title}
                 </h4>
@@ -193,26 +172,15 @@ export default function ItConsultancyPage() {
               Sectors We Serve
             </h3>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="flex flex-wrap justify-center gap-3">
             {sectors.map((sector) => (
-              <div
-                key={sector.name}
-                className="bg-white border rounded-xl p-6 text-center"
-                style={{ borderColor: "var(--color-border)" }}
+              <span
+                key={sector}
+                className="px-5 py-2.5 rounded-full border bg-white font-medium text-sm"
+                style={{ borderColor: "var(--color-border)", color: "var(--color-foreground)" }}
               >
-                <Icon
-                  icon={sector.icon}
-                  width={28}
-                  height={28}
-                  style={{ color: "var(--color-primary)", margin: "0 auto 12px" }}
-                />
-                <p
-                  className="text-xs font-medium"
-                  style={{ color: "var(--color-foreground)", lineHeight: 1.4 }}
-                >
-                  {sector.name}
-                </p>
-              </div>
+                {sector}
+              </span>
             ))}
           </div>
         </div>
@@ -243,15 +211,6 @@ export default function ItConsultancyPage() {
                 className="border rounded-xl p-8 text-center"
                 style={{ borderColor: "var(--color-border)", backgroundColor: "var(--color-secondary)" }}
               >
-                <div
-                  className="size-14 rounded-full flex items-center justify-center mx-auto mb-6"
-                  style={{
-                    backgroundColor: "color-mix(in oklab, var(--color-primary) 10%, transparent)",
-                    color: "var(--color-primary)",
-                  }}
-                >
-                  <Icon icon={model.icon} width={24} height={24} />
-                </div>
                 <h4
                   className="font-bold text-xl mb-3"
                   style={{ color: "var(--color-blue)" }}

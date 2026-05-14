@@ -52,7 +52,7 @@ export function ServicesSaas() {
         {/* Header */}
         <div className="mb-12">
           <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase mb-6 border"
+            className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase mb-6 border"
             style={{
               backgroundColor:
                 "color-mix(in oklab, var(--color-blue) 10%, transparent)",
@@ -62,7 +62,6 @@ export function ServicesSaas() {
               letterSpacing: "var(--tracking-widest)",
             }}
           >
-            <Icon icon="lucide:cloud" width={14} height={14} />
             Cloud Hosted
           </div>
 
@@ -102,19 +101,13 @@ export function ServicesSaas() {
             >
               Our Modules
             </h4>
-            <ul className="space-y-2 mb-8">
+            <ul className="space-y-2 mb-8" style={{ listStyleType: "disc", paddingLeft: "1.25rem" }}>
               {saasModules.map((module) => (
                 <li
                   key={module}
-                  className="flex items-center gap-2 text-sm"
+                  className="text-sm"
                   style={{ color: "var(--color-muted-foreground)" }}
                 >
-                  <Icon
-                    icon="lucide:check"
-                    width={16}
-                    height={16}
-                    style={{ color: "var(--color-red)", flexShrink: 0 }}
-                  />
                   {module}
                 </li>
               ))}
@@ -176,26 +169,14 @@ export function ServicesSaas() {
             >
               Benefits of BISTA SaaS
             </h4>
-            <ul className="space-y-4 mb-10">
+            <ul className="space-y-4 mb-10" style={{ listStyleType: "disc", paddingLeft: "1.25rem" }}>
               {saasBenefits.map((benefit) => (
                 <li
                   key={benefit}
-                  className="flex items-start gap-3 text-sm"
-                  style={{ color: "var(--color-muted-foreground)" }}
+                  className="text-sm"
+                  style={{ color: "var(--color-muted-foreground)", lineHeight: "var(--leading-relaxed)" }}
                 >
-                  <Icon
-                    icon="lucide:check-circle"
-                    width={18}
-                    height={18}
-                    style={{
-                      color: "var(--color-primary)",
-                      flexShrink: 0,
-                      marginTop: "1px",
-                    }}
-                  />
-                  <span style={{ lineHeight: "var(--leading-relaxed)" }}>
-                    {benefit}
-                  </span>
+                  {benefit}
                 </li>
               ))}
             </ul>
