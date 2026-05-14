@@ -5,14 +5,14 @@ const contactCards = [
   {
     icon: "lucide:map-pin",
     title: "Visit Our Office",
-    line1: "BISTA House, Accra",
-    line2: "Ghana, West Africa",
+    line1: "Nii Teiko Kwame Close",
+    line2: "Kokomlemle, Accra, Ghana",
     color: "var(--color-blue)",
   },
   {
     icon: "lucide:phone",
     title: "Call Us",
-    line1: "+233 (0) 30 200 0000",
+    line1: "+233 244 586 714",
     line2: "Mon - Fri, 8:00 AM - 5:00 PM",
     color: "var(--color-primary)",
   },

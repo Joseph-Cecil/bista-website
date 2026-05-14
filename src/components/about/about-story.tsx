@@ -1,101 +1,167 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 
 export function AboutStory() {
   return (
-    <section className="py-24 px-10 max-w-6xl mx-auto">
-      <div className="grid md:grid-cols-2 gap-16 items-center">
-        {/* Text Column */}
-        <div>
-          <h2
-            className="text-sm font-bold uppercase mb-3"
-            style={{
-              color: "var(--color-red)",
-              letterSpacing: "var(--tracking-widest)",
-            }}
-          >
-            The Beginning
-          </h2>
-          <h3
-            className="font-bold mb-6"
-            style={{
-              fontFamily: "var(--font-headings)",
-              fontSize: "var(--text-4xl)",
-              color: "var(--color-blue)",
-              lineHeight: "var(--leading-tight)",
-            }}
-          >
-            A Vision for{" "}
-            <span style={{ color: "var(--color-primary)" }}>
-              African Innovation
-            </span>
-          </h3>
+    <>
+      {/* Full-width About banner from legacy about-us.html */}
+      <div className="w-full">
+        <Image
+          src="/images/about/about-design.jpg"
+          alt="About BISTA Solutions — our team and history"
+          width={1200}
+          height={400}
+          className="w-full object-cover"
+          style={{ maxHeight: "420px" }}
+        />
+      </div>
 
-          <div
-            className="space-y-6 text-lg"
+      <section className="py-16 px-10 max-w-6xl mx-auto">
+        {/* Company history */}
+        <div className="mb-12">
+          <p
+            className="text-base mb-6"
             style={{
-              color: "var(--color-muted-foreground)",
-              lineHeight: "var(--leading-relaxed)",
+              color: "#444444",
+              lineHeight: "1.75",
+              textAlign: "justify",
             }}
           >
-            <p>
-              Founded in 2009, BISTA Solutions Limited began with a clear and
-              ambitious mandate: to elevate the standard of enterprise IT
-              services in Ghana. We recognized early on that local businesses
-              needed world-class technology tailored to the unique operational
-              realities of West Africa.
-            </p>
-            <p>
-              Over the past decade, we have grown from a specialized database
-              management consultancy into a full-spectrum technology partner.
-              Our expertise now spans custom software development, robust IT
-              infrastructure, e-commerce, and global consumer tech partnerships.
-            </p>
-          </div>
+            BISTA Solutions Limited was incorporated as a wholly owned Ghanaian
+            Information Technology organization registered in 2009 to translate
+            the vast experience of its consultants in the software development
+            and database management to assist government institutions and
+            corporate Ghana in utilizing Information Technology to operate
+            effectively and efficiently to achieve their business goals. The
+            company was also registered to represent manufacturers across the
+            globe in information technology related products.
+          </p>
+          <p
+            className="text-base mb-6"
+            style={{
+              color: "#444444",
+              lineHeight: "1.75",
+              textAlign: "justify",
+            }}
+          >
+            BISTA Solutions is an experienced and a longstanding provider of
+            cutting-edge integrated information technology solutions to a wide
+            range of customers in Ghana. Our understanding of the Ghanaian
+            culture, traditional values and business practices combined with our
+            technical expertise and experience in implementing effective
+            technological solutions and sales of technological devices account
+            for our success. Our priority at BISTA Solutions is helping our
+            customers succeed.
+          </p>
+          <p
+            className="text-base mb-6"
+            style={{
+              color: "#444444",
+              lineHeight: "1.75",
+              textAlign: "justify",
+            }}
+          >
+            Customer success is our success. Our teams of high calibre skilled
+            information technology (IT) and business professionals and Sales
+            Executives have the commitment to deliver the required services
+            efficiently and are always available to assist. With our track
+            record, BISTA Solutions has the requisite competence to meet the
+            challenges of software projects.
+          </p>
+          <p
+            className="text-base mb-6"
+            style={{
+              color: "#444444",
+              lineHeight: "1.75",
+              textAlign: "justify",
+            }}
+          >
+            Since its inception, we have adopted the CMM (Capability Maturity
+            Model) as a benchmark to assess the quality of our personnel and
+            processes. This does not only allow us to maintain defined process
+            control but also increase accountability and efficiency while
+            developing process-critical applications.
+          </p>
+          <p
+            className="text-base mb-10"
+            style={{
+              color: "#444444",
+              lineHeight: "1.75",
+              textAlign: "justify",
+            }}
+          >
+            BISTA Solutions&apos; research into the modern sales strategies has led
+            to the development of an e-commerce site known as paaopaa.com
+            (which literally means service) to sell our products and also allow
+            other vendors to sell their products on the site. BISTA is the
+            country representative of Energizer mobile phones and accessories
+            since July 2019.
+          </p>
+        </div>
 
-          {/* Pull Quote */}
-          <div
-            className="mt-10 p-6 rounded-r-lg border-l-4"
-            style={{
-              backgroundColor: "var(--color-secondary)",
-              borderLeftColor: "var(--color-primary)",
-            }}
+        {/* Vision / Mission / Values */}
+        <div className="mb-10">
+          <p
+            className="text-base mb-2"
+            style={{ color: "#444444", lineHeight: "1.75" }}
           >
-            <p
-              className="italic font-medium text-lg"
+            <strong
+              className="font-semibold"
               style={{ color: "var(--color-foreground)" }}
             >
-              &ldquo;We do not just install software; we engineer sustainable
-              growth for our clients by blending local insight with global
-              standards.&rdquo;
-            </p>
-          </div>
+              Our Vision:
+            </strong>{" "}
+            To become the biggest household name in technology business in
+            Africa
+          </p>
+          <p
+            className="text-base mb-2"
+            style={{ color: "#444444", lineHeight: "1.75" }}
+          >
+            <strong
+              className="font-semibold"
+              style={{ color: "var(--color-foreground)" }}
+            >
+              Our Mission:
+            </strong>{" "}
+            To readily address technological needs, in the areas of software
+            and databases
+          </p>
+          <p
+            className="text-base mb-6"
+            style={{ color: "#444444", lineHeight: "1.75" }}
+          >
+            <strong
+              className="font-semibold"
+              style={{ color: "var(--color-foreground)" }}
+            >
+              Our Core Values:
+            </strong>{" "}
+            Integrity &nbsp;&bull;&nbsp; Customer focus &nbsp;&bull;&nbsp;
+            Accountability &nbsp;&bull;&nbsp; Innovation
+          </p>
+          <p
+            className="font-semibold text-base mb-6"
+            style={{ color: "var(--color-foreground)" }}
+          >
+            Spectrum of Services Offered
+          </p>
         </div>
 
-        {/* Image Column */}
-        <div className="relative">
-          <div
-            className="absolute rounded-2xl -z-10"
-            style={{
-              inset: "-16px",
-              backgroundColor: "var(--color-secondary)",
-              transform: "rotate(3deg)",
-            }}
-          />
+        {/* Spectrum of Services diagram */}
+        <div className="flex justify-center">
           <Image
-            src="https://storage.googleapis.com/banani-generated-images/generated-images/4a1fd14a-b586-4cee-928a-37dd59b8095e.jpg"
-            alt="BISTA leadership team in strategic meeting"
-            width={800}
-            height={600}
-            className="rounded-xl w-full object-cover border"
+            src="/images/about/spectrum-of-services.jpg"
+            alt="Spectrum of Services offered by BISTA Solutions"
+            width={600}
+            height={450}
+            className="rounded-lg border object-contain"
             style={{
-              aspectRatio: "4/3",
+              maxWidth: "100%",
               borderColor: "var(--color-border)",
-              boxShadow: "0 10px 15px -3px rgba(0,0,0,0.1)",
             }}
           />
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
-

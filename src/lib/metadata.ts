@@ -9,7 +9,7 @@ export function generatePageMetadata(
     title,
     description: description || siteConfig.description,
     openGraph: {
-      title: \ | \,
+      title: `${title} | ${siteConfig.name}`,
       description: description || siteConfig.description,
       url: siteConfig.url,
     },

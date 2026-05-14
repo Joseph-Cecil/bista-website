@@ -1,4 +1,5 @@
-﻿import { Icon } from "@iconify/react";
+﻿import Image from "next/image";
+import { Icon } from "@iconify/react";
 
 export function ServicesHero() {
   return (
@@ -10,15 +11,13 @@ export function ServicesHero() {
       }}
     >
       {/* Background texture image */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "url(https://storage.googleapis.com/banani-generated-images/generated-images/1be89e3b-c445-4ccd-bd0a-db947baaa832.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.20,
-        }}
+      <Image
+        src="/images/misc/services-1.jpg"
+        alt=""
+        fill
+        className="object-cover"
+        style={{ opacity: 0.20 }}
+        aria-hidden="true"
       />
 
       {/* Gradient overlay */}

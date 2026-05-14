@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { siteConfig } from "@/config/site";
@@ -49,18 +50,14 @@ export function Footer() {
         {/* Brand Column */}
         <div className="lg:col-span-2">
           <div className="flex items-center gap-3 mb-6">
-            <div
-              className="size-10 rounded-lg flex items-center justify-center font-bold text-2xl"
-              style={{
-                backgroundColor: "var(--color-primary)",
-                color: "white",
-              }}
-            >
-              B
-            </div>
-            <span className="font-bold text-2xl" style={{ letterSpacing: "var(--tracking-tight)" }}>
-              BISTA
-            </span>
+            <Image
+              src="/images/logo/bista-logo.png"
+              alt="BISTA Solutions"
+              width={120}
+              height={40}
+              className="object-contain brightness-0 invert"
+              style={{ maxHeight: "40px", width: "auto" }}
+            />
           </div>
           <p
             className="text-sm mb-8 max-w-sm"

@@ -47,17 +47,16 @@ export function AboutSection() {
             }}
           />
           <Image
-            src="https://storage.googleapis.com/banani-generated-images/generated-images/56b1d044-f79b-41fc-92bc-4811edac4a8a.jpg"
-            alt="BISTA team collaborating in office"
+            src="/images/erp/erp-modules.png"
+            alt="BISTA ERP modules overview — complete enterprise management system"
             width={800}
             height={600}
-            className="rounded-xl w-full object-cover border"
+            className="rounded-xl w-full object-contain border bg-white p-4"
             style={{
               aspectRatio: "4/3",
               borderColor: "var(--color-border)",
               boxShadow: "0 25px 50px -12px rgba(0,0,0,0.25)",
             }}
-            unoptimized
           />
 
           {/* CEO Quote Card */}
